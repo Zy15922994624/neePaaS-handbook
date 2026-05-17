@@ -1,0 +1,5 @@
+
+> neepaas-handbook@1.0.0 preview
+> vitepress preview . --host 127.0.0.1 --port 4173
+
+Built site served at http://localhost:4173/
