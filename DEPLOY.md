@@ -4,7 +4,7 @@
 
 当前目录是一个自包含的 VitePress 文档站。
 
-仓库改为 Public 后，可以使用 GitHub Actions 自动构建并发布到 GitHub Pages。后续只需要把文档改动推送到 `main` 分支，Actions 会自动执行部署流程。
+仓库改为 Public 后，可以使用 GitHub Actions 自动构建并发布到 GitHub Pages。后续只需要把文档改动推送到 `main` 分支，Actions 会自动构建 VitePress，并把静态产物发布到 `gh-pages` 分支。
 
 ## 本地命令
 
@@ -18,8 +18,10 @@ npm run preview
 ## GitHub Pages 设置
 
 1. 进入仓库 `Settings -> Pages`。
-2. Source 选择 `GitHub Actions`。
-3. 保存后，推送到 `main` 分支会自动触发部署。
+2. Source 选择 `Deploy from a branch`。
+3. Branch 选择 `gh-pages`。
+4. Folder 选择 `/root`。
+5. 保存后，推送到 `main` 分支会自动触发部署。
 
 发布地址：
 
@@ -39,6 +41,13 @@ git push
 ```
 
 推送完成后，进入仓库 `Actions` 页面查看 `Deploy VitePress site to GitHub Pages` 工作流。
+
+工作流会自动完成：
+
+- 安装依赖。
+- 使用 `BASE_PATH=/neePaaS-handbook/` 构建 VitePress。
+- 将 `.vitepress/dist` 推送到 `gh-pages` 分支。
+- GitHub Pages 根据 `gh-pages` 分支发布线上站点。
 
 ## 仓库路径说明
 
